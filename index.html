@@ -3,111 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katlo Pole | Network Engineer & Cloud Specialist</title>
+    <title>IR/BC/DR Knowledge Test</title>
     <style>
-        /* Modern, professional styling */
         :root {
             --primary: #2c3e50;
             --secondary: #3498db;
             --accent: #e74c3c;
             --light: #ecf0f1;
             --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+        
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            color: var(--dark);
-            background: #f9f9f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
+        
         header {
-            text-align: center;
-            padding: 30px 0;
-            background: var(--primary);
+            background-color: var(--primary);
             color: white;
+            padding: 20px 0;
+            text-align: center;
             margin-bottom: 30px;
+            border-radius: 5px;
         }
+        
         h1 {
-            margin: 0;
-            font-size: 2.5em;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
+        
         h2 {
             color: var(--secondary);
-            border-bottom: 2px solid var(--light);
+            margin: 20px 0 15px;
+            border-bottom: 2px solid var(--secondary);
             padding-bottom: 5px;
-            margin-top: 30px;
         }
-        h3 {
-            color: var(--primary);
-            margin-bottom: 5px;
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 25px;
         }
-        a {
-            color: var(--secondary);
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
             text-decoration: none;
+            margin: 5px;
         }
-        a:hover {
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background-color: var(--accent);
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+        }
+        
+        .btn-success:hover {
+            background-color: #219653;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .options {
+            margin-left: 20px;
+        }
+        
+        .option {
+            margin-bottom: 10px;
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .results {
+            text-align: center;
+        }
+        
+        .score {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--primary);
+        }
+        
+        .correct {
+            color: var(--success);
+        }
+        
+        .incorrect {
             color: var(--accent);
         }
-        .contact-bar {
-            background: var(--light);
-            padding: 10px;
-            margin: 15px 0;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .section {
-            margin: 30px 0;
-        }
-        .card {
-            background: white;
-            border-left: 4px solid var(--secondary);
+        
+        .review-question {
+            background-color: #f8f9fa;
             padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .correct-answer {
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .user-answer {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .history-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
         }
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
+        
+        .progress {
+            height: 100%;
+            background-color: var(--secondary);
+            width: 0%;
+            transition: width 0.3s ease;
         }
-        .skill-tag {
-            background: #e1f0ff;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            color: var(--primary);
+        
+        .hidden {
+            display: none;
         }
-        .skill-tag.highlight {
-            background: var(--secondary);
-            color: white;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .achievement {
-            border-left: 3px solid var(--accent);
-            padding-left: 15px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #777;
-            margin-top: 50px;
-        }
+        
         @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -115,138 +229,716 @@
 <body>
     <div class="container">
         <header>
-            <h1>KATLO POLE</h1>
-            <p>Bachelor of Science in Network Systems Engineering | CCNA Certified</p>
+            <h1>IR/BC/DR Knowledge Test</h1>
+            <p>Test your knowledge of Incident Response, Business Continuity, and Disaster Recovery concepts</p>
         </header>
-
-        <div class="contact-bar">
-            📍 Gaborone, Botswana | 📧 polemoroke@gmail.com | 📞 +267 74896968 |
-            <a href="https://linkedin.com/in/katlomorokepole" target="_blank">LinkedIn</a>
+        
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="card">
+            <h2>Test Setup</h2>
+            <div class="form-group">
+                <label for="test-mode">Test Mode:</label>
+                <select id="test-mode" class="form-control">
+                    <option value="10">10 Questions</option>
+                    <option value="20">20 Questions</option>
+                    <option value="all">All Questions (30)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="timed">Timed Test:</label>
+                <select id="timed" class="form-control">
+                    <option value="no">No Time Limit</option>
+                    <option value="yes">Timed (1 minute per question)</option>
+                </select>
+            </div>
+            <button id="start-test" class="btn">Start Test</button>
         </div>
-
-        <section class="section">
-            <h2>🔹 PROFESSIONAL SUMMARY</h2>
-            <div class="card">
-                <p>Junior Network Engineer with hands-on experience in <strong>enterprise networking, cloud infrastructure, and cybersecurity</strong>. 
-                Proven track record in IT support, network troubleshooting, and collaborative software development. 
-                Strong foundation in network systems with certifications from <strong>Cisco (CCNA)</strong> and <strong>EC-Council</strong>.</p>
+        
+        <!-- Test Screen -->
+        <div id="test-screen" class="hidden">
+            <div class="progress-bar">
+                <div class="progress" id="progress-bar"></div>
             </div>
-        </section>
-
-        <section class="section">
-            <h2>🏆 CORE EXPERTISE</h2>
-            <div class="skills">
-                <span class="skill-tag highlight">Cisco CCNA</span>
-                <span class="skill-tag highlight">AWS EC2/CLI</span>
-                <span class="skill-tag highlight">Network Security</span>
-                <span class="skill-tag">Linux Administration</span>
-                <span class="skill-tag">Python/C#</span>
-                <span class="skill-tag">Wireless Networking</span>
-                <span class="skill-tag">Windows Server</span>
-                <span class="skill-tag">Penetration Testing</span>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>🎓 EDUCATION</h2>
-            <div class="card">
-                <h3>Botswana Accountancy College (2021–2025)</h3>
-                <p><strong>Bachelor of Science in Network Systems Engineering</strong></p>
-                <p>Key Modules: Network Architecture Design (76%), Network Security (76%), Data Center Networking (71%), C# Programming (90%)</p>
-                <p>Credits Earned: 360/360 | GPA: 3.2</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>📜 CERTIFICATIONS</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>CCNA: Enterprise Networking</h3>
-                    <p><em>Cisco Networking Academy | Oct 2023</em></p>
-                    <ul>
-                        <li>Configured OSPFv2 in multiaccess networks</li>
-                        <li>Implemented IPv4 ACLs for traffic filtering</li>
-                        <li>Deployed NAT services for IPv4 scalability</li>
-                    </ul>
+            <div class="timer hidden" id="timer">Time Remaining: 10:00</div>
+            <form id="test-form">
+                <div id="questions-container"></div>
+                <div class="form-group" style="text-align: center;">
+                    <button type="submit" class="btn btn-success">Submit Test</button>
                 </div>
-                <div class="card">
-                    <h3>Malware Analysis Fundamentals</h3>
-                    <p><em>EC-Council | Jun 2025</em></p>
-                    <ul>
-                        <li>4-hour intensive training</li>
-                        <li>Threat identification techniques</li>
-                    </ul>
+            </form>
+        </div>
+        
+        <!-- Results Screen -->
+        <div id="results-screen" class="card hidden">
+            <div class="results">
+                <h2>Test Results</h2>
+                <div class="score">
+                    Your Score: <span id="score">0</span>%
                 </div>
-                <div class="card">
-                    <h3>Orange Summer Challenge 2024</h3>
-                    <p><em>3rd Place | Nov 2024</em></p>
-                    <ul>
-                        <li>Team-based software development</li>
-                        <li>Agile project delivery</li>
-                    </ul>
+                <p id="score-message"></p>
+                <div id="review-questions"></div>
+                <div class="form-group" style="text-align: center;">
+                    <button id="retry-test" class="btn">Retry Missed Questions</button>
+                    <button id="new-test" class="btn">Start New Test</button>
+                    <button id="view-history" class="btn">View History</button>
                 </div>
             </div>
-        </section>
-
-        <section class="section">
-            <h2>💼 PROFESSIONAL EXPERIENCE</h2>
-            <div class="card">
-                <h3>IT Support Intern</h3>
-                <p><em>Central Transport Organisation (Jan–Jun 2024)</em></p>
-                <ul>
-                    <li>Provided remote support using TightVNC/SSH</li>
-                    <li>Troubleshot network infrastructure issues</li>
-                    <li>Documented service requests and SLAs</li>
-                </ul>
+        </div>
+        
+        <!-- History Screen -->
+        <div id="history-screen" class="card hidden">
+            <h2>Test History</h2>
+            <div id="history-list"></div>
+            <div class="form-group" style="text-align: center; margin-top: 20px;">
+                <button id="back-to-results" class="btn">Back to Results</button>
+                <button id="clear-history" class="btn btn-danger">Clear History</button>
             </div>
-            <div class="card">
-                <h3>Orange Summer Intern</h3>
-                <p><em>Orange Digital Centre (Jul–Nov 2024)</em></p>
-                <ul>
-                    <li>Developed cloud-based solution (3rd place)</li>
-                    <li>Practiced agile methodologies</li>
-                    <li>Enhanced team coordination skills</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>🚀 PROJECTS & ACHIEVEMENTS</h2>
-            <div class="grid">
-                <div class="card achievement">
-                    <h3>FNB Hackathon 2025 (2nd Place)</h3>
-                    <p>Built fintech prototype with AWS EC2, Elastic IPs, and security groups.</p>
-                </div>
-                <div class="card achievement">
-                    <h3>Network Architecture Design (76%)</h3>
-                    <p>Designed scalable enterprise network at Botswana Accountancy College.</p>
-                </div>
-                <div class="card achievement">
-                    <h3>C# Programming (90%)</h3>
-                    <p>Top performer in introductory C# course.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>🛠️ TECHNICAL SKILLS</h2>
-            <div class="skills">
-                <span class="skill-tag">Routing & Switching</span>
-                <span class="skill-tag">AWS EC2</span>
-                <span class="skill-tag">Kali Linux</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">C#</span>
-                <span class="skill-tag">Bash Scripting</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Windows Server</span>
-                <span class="skill-tag">Wireshark</span>
-                <span class="skill-tag">Git</span>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2025 Katlo Pole | Portfolio hosted on GitHub Pages</p>
-        </footer>
+        </div>
     </div>
+
+    <script>
+        // Question bank
+        const questions = [
+            {
+                question: "What is the primary goal of incident management?",
+                options: [
+                    "To punish those responsible for security breaches",
+                    "To be prepared with a policy and response plan",
+                    "To immediately shut down all systems during an incident",
+                    "To focus only on technical aspects of the incident"
+                ],
+                answer: 1,
+                module: "Incident Response"
+            },
+            {
+                question: "Which of the following best describes a 'breach' according to NIST SP 800-53?",
+                options: [
+                    "Any observable occurrence in a network or system",
+                    "The loss of control or unauthorized disclosure of personally identifiable information",
+                    "A weakness in an information system that could be exploited",
+                    "A deliberate attempt to gain unauthorized access to a system"
+                ],
+                answer: 1,
+                module: "Incident Response"
+            },
+            {
+                question: "What is the first priority in any incident response situation?",
+                options: [
+                    "Protecting the organization's financial assets",
+                    "Preserving evidence for legal proceedings",
+                    "Protecting life, health, and safety",
+                    "Restoring IT systems as quickly as possible"
+                ],
+                answer: 2,
+                module: "Incident Response"
+            },
+            {
+                question: "Which component of the incident response plan involves developing a policy approved by management?",
+                options: [
+                    "Detection and Analysis",
+                    "Containment, Eradication and Recovery",
+                    "Preparation",
+                    "Post-incident activity"
+                ],
+                answer: 2,
+                module: "Incident Response"
+            },
+            {
+                question: "What is the purpose of a Computer Security Incident Response Team (CSIRT)?",
+                options: [
+                    "To handle all IT operations during normal business hours",
+                    "To investigate computer security incidents that take place",
+                    "To manage the organization's social media presence during incidents",
+                    "To develop new security products for the organization"
+                ],
+                answer: 1,
+                module: "Incident Response"
+            },
+            {
+                question: "What is a 'zero day' vulnerability?",
+                options: [
+                    "A vulnerability that has existed for zero days",
+                    "A previously unknown vulnerability with no existing detection or prevention methods",
+                    "A vulnerability that only appears at midnight",
+                    "A vulnerability that affects zero systems"
+                ],
+                answer: 1,
+                module: "Incident Response"
+            },
+            {
+                question: "During the containment phase of incident response, what should be done first?",
+                options: [
+                    "Gather evidence for legal proceedings",
+                    "Choose an appropriate containment strategy",
+                    "Publicly announce the incident details",
+                    "Reboot all affected systems"
+                ],
+                answer: 1,
+                module: "Incident Response"
+            },
+            {
+                question: "Which of the following should be included in an incident response team?",
+                options: [
+                    "Only IT personnel",
+                    "Only senior management",
+                    "A cross-functional group representing management, technical, legal, and PR areas",
+                    "Only external consultants"
+                ],
+                answer: 2,
+                module: "Incident Response"
+            },
+            {
+                question: "What is the main purpose of post-incident activity?",
+                options: [
+                    "To assign blame for the incident",
+                    "To document lessons learned and improve future response",
+                    "To delete all evidence of the incident",
+                    "To reduce IT security spending"
+                ],
+                answer: 1,
+                module: "Incident Response"
+            },
+            {
+                question: "Which term refers to 'any observable occurrence in a network or system'?",
+                options: [
+                    "Incident",
+                    "Event",
+                    "Breach",
+                    "Exploit"
+                ],
+                answer: 1,
+                module: "Incident Response"
+            },
+            {
+                question: "What is the intent of a business continuity plan?",
+                options: [
+                    "To permanently shut down business operations during a crisis",
+                    "To sustain business operations while recovering from a significant disruption",
+                    "To focus only on IT system recovery",
+                    "To replace all employees with automated systems"
+                ],
+                answer: 1,
+                module: "Business Continuity"
+            },
+            {
+                question: "Which of the following is a key part of a business continuity plan?",
+                options: [
+                    "Communication strategies and backup contact methods",
+                    "Detailed technical specifications for all IT equipment",
+                    "Marketing plans for new products",
+                    "Employee vacation schedules"
+                ],
+                answer: 0,
+                module: "Business Continuity"
+            },
+            {
+                question: "Why is management inclusion important in business continuity planning?",
+                options: [
+                    "Only management can operate computers during a crisis",
+                    "Management may need to make decisions about shutting down critical areas",
+                    "Management handles all technical aspects of recovery",
+                    "It's required by law in all countries"
+                ],
+                answer: 1,
+                module: "Business Continuity"
+            },
+            {
+                question: "How often should an organization test its business continuity plan?",
+                options: [
+                    "Only when required by auditors",
+                    "Routinely at predefined intervals and when significant changes occur",
+                    "Only after a major disaster has occurred",
+                    "Never - once created, the plan doesn't need testing"
+                ],
+                answer: 1,
+                module: "Business Continuity"
+            },
+            {
+                question: "What should a business continuity plan include regarding supply chain?",
+                options: [
+                    "Critical contact numbers for vendors and customers",
+                    "Detailed financial records of all transactions",
+                    "Employee personal contact information",
+                    "Product pricing strategies"
+                ],
+                answer: 0,
+                module: "Business Continuity"
+            },
+            {
+                question: "What is the primary difference between business continuity and disaster recovery?",
+                options: [
+                    "Business continuity focuses on IT systems, disaster recovery focuses on people",
+                    "Business continuity maintains operations during disruption, disaster recovery restores operations after",
+                    "They are exactly the same thing",
+                    "Business continuity is for small businesses, disaster recovery is for large enterprises"
+                ],
+                answer: 1,
+                module: "Business Continuity"
+            },
+            {
+                question: "Which of these is NOT typically included in a business continuity plan?",
+                options: [
+                    "Immediate response procedures and checklists",
+                    "Notification systems and call trees",
+                    "Guidance for management",
+                    "Employee salary details"
+                ],
+                answer: 3,
+                module: "Business Continuity"
+            },
+            {
+                question: "What is the purpose of a phone tree in business continuity planning?",
+                options: [
+                    "To ensure communication can continue if primary methods fail",
+                    "To track employee working hours",
+                    "To manage social media posts",
+                    "To record customer complaints"
+                ],
+                answer: 0,
+                module: "Business Continuity"
+            },
+            {
+                question: "When developing a business continuity plan, who should participate?",
+                options: [
+                    "Only IT staff",
+                    "Only senior management",
+                    "Representatives from across the organization",
+                    "Only external consultants"
+                ],
+                answer: 2,
+                module: "Business Continuity"
+            },
+            {
+                question: "What is business continuity management (BCM)?",
+                options: [
+                    "The broader discipline that includes incident response planning",
+                    "A system for tracking employee attendance",
+                    "A method for calculating financial profits",
+                    "A type of computer backup system"
+                ],
+                answer: 0,
+                module: "Business Continuity"
+            },
+            {
+                question: "What is the primary goal of disaster recovery?",
+                options: [
+                    "To permanently relocate business operations",
+                    "To restore IT and communications services during and after an outage",
+                    "To punish those responsible for the disaster",
+                    "To create new business opportunities from the disaster"
+                ],
+                answer: 1,
+                module: "Disaster Recovery"
+            },
+            {
+                question: "Which of these is typically included in a disaster recovery plan?",
+                options: [
+                    "Department-specific plans",
+                    "Employee performance reviews",
+                    "Marketing strategies",
+                    "Product development timelines"
+                ],
+                answer: 0,
+                module: "Disaster Recovery"
+            },
+            {
+                question: "Who are the primary members responsible for disaster recovery?",
+                options: [
+                    "Marketing team",
+                    "IT personnel",
+                    "Sales team",
+                    "Human resources"
+                ],
+                answer: 1,
+                module: "Disaster Recovery"
+            },
+            {
+                question: "What is the purpose of checklists in a disaster recovery plan?",
+                options: [
+                    "To guide actions during the chaotic atmosphere of a disaster",
+                    "To track employee vacation days",
+                    "To record customer orders",
+                    "To manage social media posts"
+                ],
+                answer: 0,
+                module: "Disaster Recovery"
+            },
+            {
+                question: "Which component of a DR plan would be most useful for public relations staff?",
+                options: [
+                    "Technical guides for IT personnel",
+                    "High-level summary documents for communication",
+                    "Detailed system architecture diagrams",
+                    "Server configuration details"
+                ],
+                answer: 1,
+                module: "Disaster Recovery"
+            },
+            {
+                question: "How does disaster recovery differ from business continuity?",
+                options: [
+                    "DR focuses on restoring IT systems, BC focuses on maintaining business operations",
+                    "DR is only for natural disasters, BC is for cyber attacks",
+                    "They are identical in purpose and scope",
+                    "DR is optional, BC is mandatory"
+                ],
+                answer: 0,
+                module: "Disaster Recovery"
+            },
+            {
+                question: "What should a DR plan include for critical team members?",
+                options: [
+                    "Full copies of the plan",
+                    "Only summary information",
+                    "Just the executive summary",
+                    "No documentation - it should all be memorized"
+                ],
+                answer: 0,
+                module: "Disaster Recovery"
+            },
+            {
+                question: "Which of these is NOT a typical component of a DR plan?",
+                options: [
+                    "Executive summary",
+                    "Technical guides for IT personnel",
+                    "Department-specific plans",
+                    "Employee personal contact information"
+                ],
+                answer: 3,
+                module: "Disaster Recovery"
+            },
+            {
+                question: "What is the relationship between incident response, business continuity, and disaster recovery?",
+                options: [
+                    "They are three completely separate processes with no overlap",
+                    "IR responds to incidents, BC maintains operations during disruption, DR restores operations after",
+                    "They are three names for the same process",
+                    "Only large organizations need all three"
+                ],
+                answer: 1,
+                module: "All"
+            },
+            {
+                question: "Which concept is primarily focused on availability in the CIA triad?",
+                options: [
+                    "Only incident response",
+                    "Only business continuity",
+                    "Only disaster recovery",
+                    "All three (IR, BC, DR)"
+                ],
+                answer: 3,
+                module: "All"
+            }
+        ];
+
+        // Global variables
+        let currentTest = [];
+        let userAnswers = [];
+        let testStartTime;
+        let timerInterval;
+        let timePerQuestion = 60; // seconds
+        let totalTime = 0;
+        let isTimed = false;
+        let testHistory = JSON.parse(localStorage.getItem('testHistory')) || [];
+
+        // DOM elements
+        const setupScreen = document.getElementById('setup-screen');
+        const testScreen = document.getElementById('test-screen');
+        const resultsScreen = document.getElementById('results-screen');
+        const historyScreen = document.getElementById('history-screen');
+        const testForm = document.getElementById('test-form');
+        const questionsContainer = document.getElementById('questions-container');
+        const progressBar = document.getElementById('progress-bar');
+        const timerElement = document.getElementById('timer');
+        const scoreElement = document.getElementById('score');
+        const scoreMessageElement = document.getElementById('score-message');
+        const reviewQuestionsElement = document.getElementById('review-questions');
+        const historyListElement = document.getElementById('history-list');
+
+        // Event listeners
+        document.getElementById('start-test').addEventListener('click', startTest);
+        testForm.addEventListener('submit', submitTest);
+        document.getElementById('retry-test').addEventListener('click', retryMissedQuestions);
+        document.getElementById('new-test').addEventListener('click', newTest);
+        document.getElementById('view-history').addEventListener('click', viewHistory);
+        document.getElementById('back-to-results').addEventListener('click', backToResults);
+        document.getElementById('clear-history').addEventListener('click', clearHistory);
+
+        // Start a new test
+        function startTest() {
+            const questionCount = document.getElementById('test-mode').value;
+            isTimed = document.getElementById('timed').value === 'yes';
+            
+            // Determine how many questions to include
+            let numQuestions;
+            if (questionCount === 'all') {
+                numQuestions = questions.length;
+            } else {
+                numQuestions = parseInt(questionCount);
+            }
+            
+            // Shuffle questions and select the requested number
+            currentTest = shuffleArray([...questions]).slice(0, numQuestions);
+            userAnswers = new Array(currentTest.length).fill(null);
+            
+            // Set up timer if timed test
+            if (isTimed) {
+                totalTime = numQuestions * timePerQuestion;
+                timerElement.classList.remove('hidden');
+                updateTimerDisplay();
+                timerInterval = setInterval(updateTimer, 1000);
+            } else {
+                timerElement.classList.add('hidden');
+            }
+            
+            // Display questions
+            displayQuestions();
+            
+            // Switch to test screen
+            setupScreen.classList.add('hidden');
+            testScreen.classList.remove('hidden');
+            
+            // Record start time
+            testStartTime = new Date();
+        }
+
+        // Display questions in the test screen
+        function displayQuestions() {
+            questionsContainer.innerHTML = '';
+            
+            currentTest.forEach((question, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                questionElement.innerHTML = `
+                    <div class="question-text">${index + 1}. ${question.question}</div>
+                    <div class="options">
+                        ${question.options.map((option, i) => `
+                            <div class="option">
+                                <input type="radio" id="q${index}_o${i}" name="q${index}" value="${i}" ${userAnswers[index] === i ? 'checked' : ''}>
+                                <label for="q${index}_o${i}">${option}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                questionsContainer.appendChild(questionElement);
+                
+                // Add event listeners to radio buttons to track answers
+                question.options.forEach((_, i) => {
+                    const radio = document.getElementById(`q${index}_o${i}`);
+                    radio.addEventListener('change', () => {
+                        userAnswers[index] = i;
+                        updateProgressBar();
+                    });
+                });
+            });
+            
+            updateProgressBar();
+        }
+
+        // Update progress bar based on answered questions
+        function updateProgressBar() {
+            const answered = userAnswers.filter(answer => answer !== null).length;
+            const progress = (answered / currentTest.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Update timer display
+        function updateTimer() {
+            totalTime--;
+            updateTimerDisplay();
+            
+            if (totalTime <= 0) {
+                clearInterval(timerInterval);
+                submitTest({preventDefault: () => {}}); // Auto-submit when time runs out
+            }
+        }
+
+        // Format and display the timer
+        function updateTimerDisplay() {
+            const minutes = Math.floor(totalTime / 60);
+            const seconds = totalTime % 60;
+            timerElement.textContent = `Time Remaining: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            
+            // Change color when time is running low
+            if (totalTime <= 30) {
+                timerElement.style.color = 'var(--accent)';
+            } else if (totalTime <= 60) {
+                timerElement.style.color = 'var(--warning)';
+            } else {
+                timerElement.style.color = 'var(--secondary)';
+            }
+        }
+
+        // Submit the test
+        function submitTest(e) {
+            e.preventDefault();
+            
+            // Clear timer if running
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            
+            // Calculate score
+            let correct = 0;
+            const reviewItems = [];
+            
+            currentTest.forEach((question, index) => {
+                if (userAnswers[index] === question.answer) {
+                    correct++;
+                } else {
+                    reviewItems.push({
+                        question: question.question,
+                        userAnswer: userAnswers[index] !== null ? question.options[userAnswers[index]] : "No answer provided",
+                        correctAnswer: question.options[question.answer],
+                        module: question.module
+                    });
+                }
+            });
+            
+            const score = Math.round((correct / currentTest.length) * 100);
+            
+            // Display results
+            scoreElement.textContent = score;
+            scoreElement.className = 'score ' + (score >= 70 ? 'correct' : 'incorrect');
+            
+            // Score message
+            if (score === 100) {
+                scoreMessageElement.textContent = "Perfect score! Excellent job!";
+            } else if (score >= 90) {
+                scoreMessageElement.textContent = "Outstanding performance!";
+            } else if (score >= 80) {
+                scoreMessageElement.textContent = "Great job! You have a strong understanding of the material.";
+            } else if (score >= 70) {
+                scoreMessageElement.textContent = "Good work! You passed, but could benefit from some review.";
+            } else if (score >= 60) {
+                scoreMessageElement.textContent = "You're getting there, but need more study. Review the missed questions below.";
+            } else {
+                scoreMessageElement.textContent = "Keep studying! Review the material and try again.";
+            }
+            
+            // Display review items if any missed questions
+            if (reviewItems.length > 0) {
+                reviewQuestionsElement.innerHTML = `
+                    <h3>Missed Questions (${reviewItems.length})</h3>
+                    ${reviewItems.map((item, i) => `
+                        <div class="review-question">
+                            <p><strong>Module:</strong> ${item.module}</p>
+                            <p><strong>Question:</strong> ${item.question}</p>
+                            <p class="user-answer"><strong>Your answer:</strong> ${item.userAnswer}</p>
+                            <p class="correct-answer"><strong>Correct answer:</strong> ${item.correctAnswer}</p>
+                        </div>
+                    `).join('')}
+                `;
+            } else {
+                reviewQuestionsElement.innerHTML = '<p>You answered all questions correctly!</p>';
+            }
+            
+            // Save test results to history
+            const testResult = {
+                date: new Date().toLocaleString(),
+                score: score,
+                totalQuestions: currentTest.length,
+                correctAnswers: correct,
+                timed: isTimed,
+                missedQuestions: reviewItems.length
+            };
+            
+            testHistory.unshift(testResult);
+            localStorage.setItem('testHistory', JSON.stringify(testHistory));
+            
+            // Switch to results screen
+            testScreen.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+        }
+
+        // Retry missed questions
+        function retryMissedQuestions() {
+            // Get indices of missed questions
+            const missedIndices = [];
+            currentTest.forEach((question, index) => {
+                if (userAnswers[index] !== question.answer) {
+                    missedIndices.push(index);
+                }
+            });
+            
+            // Create new test with only missed questions
+            currentTest = missedIndices.map(index => currentTest[index]);
+            userAnswers = new Array(currentTest.length).fill(null);
+            
+            // Set up timer if timed test
+            if (isTimed) {
+                totalTime = currentTest.length * timePerQuestion;
+                timerElement.classList.remove('hidden');
+                updateTimerDisplay();
+                timerInterval = setInterval(updateTimer, 1000);
+            } else {
+                timerElement.classList.add('hidden');
+            }
+            
+            // Display questions
+            displayQuestions();
+            
+            // Switch to test screen
+            resultsScreen.classList.add('hidden');
+            testScreen.classList.remove('hidden');
+        }
+
+        // Start a brand new test
+        function newTest() {
+            // Switch back to setup screen
+            resultsScreen.classList.add('hidden');
+            setupScreen.classList.remove('hidden');
+        }
+
+        // View test history
+        function viewHistory() {
+            historyListElement.innerHTML = '';
+            
+            if (testHistory.length === 0) {
+                historyListElement.innerHTML = '<p>No test history available.</p>';
+            } else {
+                testHistory.forEach((test, index) => {
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+                    historyItem.innerHTML = `
+                        <p><strong>Date:</strong> ${test.date}</p>
+                        <p><strong>Score:</strong> <span class="${test.score >= 70 ? 'correct' : 'incorrect'}">${test.score}%</span></p>
+                        <p><strong>Questions:</strong> ${test.correctAnswers}/${test.totalQuestions} correct</p>
+                        <p><strong>Missed:</strong> ${test.missedQuestions}</p>
+                        <p><strong>Mode:</strong> ${test.timed ? 'Timed' : 'Untimed'}</p>
+                    `;
+                    historyListElement.appendChild(historyItem);
+                });
+            }
+            
+            resultsScreen.classList.add('hidden');
+            historyScreen.classList.remove('hidden');
+        }
+
+        // Back to results from history
+        function backToResults() {
+            historyScreen.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+        }
+
+        // Clear test history
+        function clearHistory() {
+            if (confirm('Are you sure you want to clear all test history? This cannot be undone.')) {
+                testHistory = [];
+                localStorage.removeItem('testHistory');
+                historyListElement.innerHTML = '<p>No test history available.</p>';
+            }
+        }
+
+        // Utility function to shuffle array
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+    </script>
 </body>
 </html>
