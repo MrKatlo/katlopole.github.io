@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katlo Pole - Network Engineering & Cybersecurity Portfolio</title>
+    <meta name="description" content="Portfolio showcasing network design, cybersecurity projects, and cloud implementations">
     <style>
         :root {
             --primary: #2c3e50;
@@ -12,6 +13,8 @@
             --light: #ecf0f1;
             --dark: #2c3e50;
             --gray: #95a5a6;
+            --dark-bg: #1a1a2e;
+            --dark-text: #f0f0f0;
         }
         
         * {
@@ -19,12 +22,18 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
         
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
+        }
+        
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
         }
         
         .container {
@@ -41,6 +50,10 @@
             overflow: hidden;
         }
         
+        .dark-mode header {
+            background-color: var(--dark-bg);
+        }
+        
         .header-content {
             position: relative;
             z-index: 2;
@@ -55,6 +68,10 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             opacity: 0.9;
             z-index: 1;
+        }
+        
+        .dark-mode .header-bg {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%);
         }
         
         .header-network {
@@ -92,6 +109,13 @@
             color: var(--primary);
         }
         
+        .dark-mode h1,
+        .dark-mode h2,
+        .dark-mode h3,
+        .dark-mode h4 {
+            color: var(--dark-text);
+        }
+        
         h1 {
             font-size: 2.5rem;
             color: white;
@@ -120,6 +144,10 @@
             transition: color 0.3s;
         }
         
+        .dark-mode a {
+            color: #4da6ff;
+        }
+        
         a:hover {
             color: var(--accent);
         }
@@ -130,6 +158,11 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin-bottom: 2rem;
+        }
+        
+        .dark-mode .section {
+            background-color: #16213e;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
         
         .objective {
@@ -156,6 +189,10 @@
             border-bottom: 1px dashed var(--gray);
             display: flex;
             align-items: center;
+        }
+        
+        .dark-mode .competency-list li {
+            border-bottom: 1px dashed #555;
         }
         
         .competency-list li:before {
@@ -205,6 +242,10 @@
             color: var(--primary);
         }
         
+        .dark-mode .timeline-date {
+            color: var(--dark-text);
+        }
+        
         .timeline-content {
             margin-top: 0.5rem;
         }
@@ -225,6 +266,10 @@
             padding: 1rem;
             border-radius: 5px;
             border-left: 4px solid var(--secondary);
+        }
+        
+        .dark-mode .certification-item {
+            background-color: #1e2a4a;
         }
         
         .skills {
@@ -260,6 +305,10 @@
             overflow: hidden;
         }
         
+        .dark-mode .skill-level {
+            background-color: #555;
+        }
+        
         .skill-progress {
             height: 100%;
             background-color: var(--secondary);
@@ -279,6 +328,11 @@
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .dark-mode .gallery-item {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
         .gallery-item:hover {
@@ -297,12 +351,20 @@
             background-color: white;
         }
         
+        .dark-mode .gallery-caption {
+            background-color: #1e2a4a;
+        }
+        
         .upload-section {
             background-color: var(--light);
             padding: 2rem;
             border-radius: 8px;
             margin-top: 2rem;
             text-align: center;
+        }
+        
+        .dark-mode .upload-section {
+            background-color: #1e2a4a;
         }
         
         .upload-btn {
@@ -345,7 +407,14 @@
             padding: 2rem;
             border-radius: 8px;
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .dark-mode .modal-content {
+            background-color: #16213e;
+            color: var(--dark-text);
         }
         
         .modal-header {
@@ -358,6 +427,11 @@
         .close-modal {
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .dark-mode .close-modal {
+            color: var(--dark-text);
         }
         
         .form-group {
@@ -370,11 +444,21 @@
             font-weight: bold;
         }
         
-        .form-group input, .form-group textarea {
+        .form-group input, 
+        .form-group textarea {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid var(--gray);
             border-radius: 4px;
+            background-color: white;
+            color: var(--dark);
+        }
+        
+        .dark-mode .form-group input,
+        .dark-mode .form-group textarea {
+            background-color: #1e2a4a;
+            border-color: #555;
+            color: var(--dark-text);
         }
         
         .form-actions {
@@ -410,6 +494,88 @@
             margin-top: 2rem;
         }
         
+        .dark-mode footer {
+            background-color: #0f0f23;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+        }
+        
+        .project-detail {
+            padding: 1rem;
+        }
+        
+        .project-detail h4 {
+            margin-top: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .tools-list {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .tools-list li {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .dark-mode .tools-list li {
+            background: #1e2a4a;
+        }
+        
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .project-images img {
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .dark-mode .project-images img {
+            border-color: #555;
+        }
+        
+        .resume-download {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .resume-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
         @media (max-width: 768px) {
             .competencies, .certifications {
                 grid-template-columns: 1fr;
@@ -425,6 +591,11 @@
             
             h2 {
                 font-size: 1.5rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
             }
         }
         
@@ -451,6 +622,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
     <header>
         <div class="header-bg"></div>
         <div class="header-network"></div>
@@ -688,41 +864,57 @@
 
         <section class="section">
             <h2>Project Gallery</h2>
-            <p>Visual documentation of my network and cybersecurity projects, including configurations, implementations, and results.</p>
+            <p>Click on any project to view detailed case studies, tools used, and implementation processes.</p>
             
             <div class="gallery" id="project-gallery">
-                <!-- Gallery items will be added dynamically -->
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Network Setup" class="gallery-image">
+                <!-- Project 1: Enterprise Network -->
+                <div class="gallery-item" onclick="openProjectModal('enterprise-network')">
+                    <img src="https://raw.githubusercontent.com/yourusername/your-repo/main/images/network-design.jpg" alt="Enterprise Network" class="gallery-image">
                     <div class="gallery-caption">
                         <h4>Enterprise Network Design</h4>
-                        <p>Cisco Packet Tracer implementation of a secure enterprise network</p>
+                        <p>Cisco Packet Tracer Implementation</p>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cybersecurity" class="gallery-image">
+                
+                <!-- Project 2: Penetration Testing -->
+                <div class="gallery-item" onclick="openProjectModal('penetration-testing')">
+                    <img src="https://raw.githubusercontent.com/yourusername/your-repo/main/images/pen-test.jpg" alt="Penetration Testing" class="gallery-image">
                     <div class="gallery-caption">
                         <h4>Penetration Testing Lab</h4>
-                        <p>Kali Linux setup for vulnerability assessment</p>
+                        <p>Kali Linux Security Assessment</p>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1581092921461-39b2f2aa99b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cloud Infrastructure" class="gallery-image">
+                
+                <!-- Project 3: AWS Cloud Deployment -->
+                <div class="gallery-item" onclick="openProjectModal('aws-cloud')">
+                    <img src="https://raw.githubusercontent.com/yourusername/your-repo/main/images/aws-ec2.jpg" alt="AWS Cloud" class="gallery-image">
                     <div class="gallery-caption">
                         <h4>AWS Cloud Deployment</h4>
-                        <p>EC2 instance configuration with security groups</p>
+                        <p>EC2 Security Hardening</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="upload-section">
-                <h3>Add Project Screenshot</h3>
-                <p>Upload images of your network diagrams, security implementations, or project results with descriptions.</p>
-                <button class="upload-btn" id="open-upload">
-                    <i class="fas fa-cloud-upload-alt"></i> Upload Image
-                </button>
-                <input type="file" id="file-input" accept="image/*">
+
+            <!-- Project Details Modal -->
+            <div class="modal" id="project-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="modal-project-title">Project Details</h3>
+                        <span class="close-modal" onclick="closeModal('project-modal')">&times;</span>
+                    </div>
+                    <div class="modal-body" id="modal-project-body">
+                        <!-- Content loaded dynamically via JavaScript -->
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Resume Download Section -->
+        <section class="section resume-download">
+            <h2>Download My Resume</h2>
+            <a href="https://github.com/yourusername/your-repo/raw/main/resume.pdf" class="resume-btn" download>
+                <i class="fas fa-download"></i> Download PDF Resume
+            </a>
         </section>
 
         <section class="section">
@@ -739,104 +931,137 @@
                 <a href="https://linkedin.com/in/katlomorokepole" target="_blank" style="color: white; margin: 0 10px;"><i class="fab fa-linkedin fa-2x"></i></a>
                 <a href="mailto:polemoroke@gmail.com" style="color: white; margin: 0 10px;"><i class="fas fa-envelope fa-2x"></i></a>
                 <a href="tel:+26774896968" style="color: white; margin: 0 10px;"><i class="fas fa-phone fa-2x"></i></a>
+                <a href="https://github.com/yourusername" target="_blank" style="color: white; margin: 0 10px;"><i class="fab fa-github fa-2x"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- Upload Modal -->
-    <div class="modal" id="upload-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Upload Project Image</h3>
-                <span class="close-modal">&times;</span>
-            </div>
-            <form id="upload-form">
-                <div class="form-group">
-                    <label for="image-title">Title</label>
-                    <input type="text" id="image-title" required>
-                </div>
-                <div class="form-group">
-                    <label for="image-description">Description</label>
-                    <textarea id="image-description" rows="3" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="image-file">Image File</label>
-                    <input type="file" id="image-file" accept="image/*" required>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancel-upload">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Upload</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
+    <!-- JavaScript -->
     <script>
-        // Modal functionality
-        const modal = document.getElementById('upload-modal');
-        const openBtn = document.getElementById('open-upload');
-        const closeBtn = document.querySelector('.close-modal');
-        const cancelBtn = document.getElementById('cancel-upload');
-        const uploadForm = document.getElementById('upload-form');
-        const gallery = document.getElementById('project-gallery');
-        
-        // Open modal
-        openBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-        });
-        
-        // Close modal
-        function closeModal() {
-            modal.style.display = 'none';
-            uploadForm.reset();
+        // Project Data (Can be moved to a separate JSON file later)
+        const projects = {
+            "enterprise-network": {
+                title: "Enterprise Network Design",
+                tools: "Cisco Packet Tracer, Wireshark, GNS3",
+                scenario: "Designed a scalable enterprise network with VLANs, DHCP, and ACLs for a medium-sized business.",
+                implementation: `
+                    <ol>
+                        <li>Planned network topology with redundant switches and routers.</li>
+                        <li>Configured VLANs for department segmentation.</li>
+                        <li>Implemented DHCP for dynamic IP allocation.</li>
+                        <li>Set up ACLs for security between departments.</li>
+                    </ol>
+                    <p><strong>Key Configuration:</strong></p>
+                    <pre><code>Router(config)# vlan 10
+Router(config-vlan)# name Sales
+Router(config)# interface vlan 10
+Router(config-if)# ip address 192.168.10.1 255.255.255.0</code></pre>
+                `,
+                testing: "Verified connectivity with ping tests, analyzed traffic in Wireshark, and stress-tested with multiple simulated hosts.",
+                images: [
+                    "https://raw.githubusercontent.com/yourusername/your-repo/main/images/network-diagram.jpg",
+                    "https://raw.githubusercontent.com/yourusername/your-repo/main/images/network-config.jpg"
+                ]
+            },
+            "penetration-testing": {
+                title: "Penetration Testing Lab",
+                tools: "Kali Linux, Metasploit, Burp Suite, Nmap",
+                scenario: "Conducted vulnerability assessment on a test web server to identify security flaws.",
+                implementation: `
+                    <ol>
+                        <li>Set up a vulnerable VM (Metasploitable2).</li>
+                        <li>Ran Nmap scans to identify open ports and services.</li>
+                        <li>Exploited weak credentials via Hydra brute-force attack.</li>
+                        <li>Performed SQL injection tests on web applications.</li>
+                        <li>Documented findings with remediation recommendations.</li>
+                    </ol>
+                    <p><strong>Example Nmap Scan:</strong></p>
+                    <pre><code>nmap -sV -A -T4 192.168.1.105</code></pre>
+                `,
+                testing: "Validated findings by exploiting vulnerabilities in a controlled environment and documented remediation steps.",
+                images: [
+                    "https://raw.githubusercontent.com/yourusername/your-repo/main/images/nmap-scan.jpg",
+                    "https://raw.githubusercontent.com/yourusername/your-repo/main/images/metasploit.jpg"
+                ]
+            },
+            "aws-cloud": {
+                title: "AWS Cloud Deployment",
+                tools: "AWS EC2, CLI, Security Groups, IAM",
+                scenario: "Deployed a secure web application on AWS with hardened security configurations.",
+                implementation: `
+                    <ol>
+                        <li>Launched EC2 instance with Amazon Linux 2.</li>
+                        <li>Configured security groups to restrict SSH and HTTP access.</li>
+                        <li>Set up IAM roles for least-privilege access.</li>
+                        <li>Enabled CloudWatch for monitoring and logging.</li>
+                        <li>Implemented automated backups with AWS Backup.</li>
+                    </ol>
+                    <p><strong>Security Group Example:</strong></p>
+                    <pre><code>aws ec2 authorize-security-group-ingress \
+    --group-id sg-903004f8 \
+    --protocol tcp \
+    --port 22 \
+    --cidr 203.0.113.0/24</code></pre>
+                `,
+                testing: "Verified security by running Nessus scans and tested failover scenarios.",
+                images: [
+                    "https://raw.githubusercontent.com/yourusername/your-repo/main/images/aws-console.jpg",
+                    "https://raw.githubusercontent.com/yourusername/your-repo/main/images/security-groups.jpg"
+                ]
+            }
+        };
+
+        // Open Project Modal
+        function openProjectModal(projectId) {
+            const project = projects[projectId];
+            const modal = document.getElementById("project-modal");
+            document.getElementById("modal-project-title").textContent = project.title;
+            
+            document.getElementById("modal-project-body").innerHTML = `
+                <div class="project-detail">
+                    <h4>Project Scenario</h4>
+                    <p>${project.scenario}</p>
+                    
+                    <h4>Tools Used</h4>
+                    <ul class="tools-list">
+                        ${project.tools.split(", ").map(tool => `<li>${tool}</li>`).join("")}
+                    </ul>
+                    
+                    <h4>Implementation Steps</h4>
+                    ${project.implementation}
+                    
+                    <h4>Testing & Results</h4>
+                    <p>${project.testing}</p>
+                    
+                    <h4>Screenshots</h4>
+                    <div class="project-images">
+                        ${project.images.map(img => `<img src="${img}" alt="${project.title}" loading="lazy">`).join("")}
+                    </div>
+                </div>
+            `;
+            
+            modal.style.display = "flex";
         }
-        
-        closeBtn.addEventListener('click', closeModal);
-        cancelBtn.addEventListener('click', closeModal);
-        
-        // Close when clicking outside modal
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
+
+        // Close Modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
             }
         });
-        
-        // Handle form submission
-        uploadForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const title = document.getElementById('image-title').value;
-            const description = document.getElementById('image-description').value;
-            const fileInput = document.getElementById('image-file');
-            
-            if (fileInput.files && fileInput.files[0]) {
-                const file = fileInput.files[0];
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    // Create new gallery item
-                    const galleryItem = document.createElement('div');
-                    galleryItem.className = 'gallery-item';
-                    
-                    galleryItem.innerHTML = `
-                        <img src="${e.target.result}" alt="${title}" class="gallery-image">
-                        <div class="gallery-caption">
-                            <h4>${title}</h4>
-                            <p>${description}</p>
-                        </div>
-                    `;
-                    
-                    // Add to gallery
-                    gallery.appendChild(galleryItem);
-                    
-                    // Close modal and reset form
-                    closeModal();
-                };
-                
-                reader.readAsDataURL(file);
-            }
-        });
-        
+
         // Animation on scroll
         const sections = document.querySelectorAll('.section');
         
